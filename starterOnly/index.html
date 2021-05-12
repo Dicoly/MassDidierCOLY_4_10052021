@@ -32,17 +32,18 @@
     </div>
     <div class="bground">
       <div class="content">
-        <span class="close"></span>
+        <span class="close" id="closeform"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();" id="myForm">
+          <form name="reserve" action="index.html" method="get" id="myForm">
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
-              <span id="erreurfirst"></span><br>
+              <span class="erreur" id="erreurfirst"></span><br>
             </div>
             <div class="formData">
               <label>Nom</label><br>
               <input class="text-control" type="text" id="last" name="last"/><br>
+              <span class="erreur" id="erreurlast"></span><br>
             </div>
             <div class="formData">
               <label>E-mail</label><br>

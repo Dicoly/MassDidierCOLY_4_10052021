@@ -8,16 +8,19 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// Lancement formulaire
 function launchModal() {
-  modalbg.style.display = "block";
+  modalBg.style.display = "block";
 }
 
-
+// fermeture formulaire via le bouton (X)
+document.getElementById("closeform").addEventListener("click", function() {
+  modalBg.style.display = "none";
+});
