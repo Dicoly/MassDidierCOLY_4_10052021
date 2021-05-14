@@ -46,10 +46,10 @@ let regexNumbers = /^[0-9]+$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-modalClose.addEventListener("click", launchModal)
+modalClose.addEventListener("click", launchModal);
 // launch modal form
 function launchModal() {
-  modalBg.classList.toggle("bground--block");
+ modalBg.classList.toggle("bground--block");
 }
 
 //Fontion pour le prénom
@@ -57,9 +57,9 @@ function validateFirst(input, error_first) {
   
   if (input.value >= 2 && input.value.trim() !== "") {
     error_first.innerHTML = "";
-    first.classList.remove("class--error");
     return true;
   } else if (regexText.test(input.value) == false || input.value.trim() == "") {
+    error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères.";
     first.classList.add("class--error");
     return false;
   } else {
@@ -76,6 +76,7 @@ function validateLast(input, error_last) {
     return true;
   } else if (regexText.test(input.value) == false) {
     last.classList.add("class--error");
+    error_last.innerHTML = "Le nom doit comporter au moins 2 caractères. ";
     return false;
   } else {
     error_last.innerHTML = "";
@@ -92,6 +93,7 @@ function validateEmail(inputMail, error_email) {
     return true;
   } else {
     email.classList.add("class--error");
+    error_email.innerHTML = "Veuillez entrer une adresse mail valide.";
   }
 }
 
@@ -104,6 +106,7 @@ function validateBirthdate(inputBirthdate, error_birthdate) {
     return true;
   } else {
     birthdate.classList.add("class--error");
+    error_birthdate.innerHTML = "Veuillez entrer une date valide.";
   }
 }
 
@@ -116,6 +119,7 @@ function validateQuantity(input, error_quantity) {
     return true;
   } else {
     quantity.classList.add("class--error");
+    error_quantity.innerHTML = "Veuillez entrer un chiffre valide.";
   } 
 }
 
@@ -129,6 +133,7 @@ function validateLocation(location, error_location) {
     return true;
   } else {
     logation.classList.add("class--error");
+    error_location.innerHTML = "Veuillez selectionner une ville..";
   }
 }
 
@@ -141,6 +146,7 @@ function validateCheckbox1(input, error_checkbox1) {
     return true;
   } else {
     checkbox1_label.classList.add("class--error");
+    error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
   }
 }
 
