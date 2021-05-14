@@ -126,7 +126,7 @@ function validateQuantity(input, error_quantity) {
 //Fontion pour la localité
 function validateLocation(location, error_location) {
   let isChecked= document.querySelectorAll('input[name="location"]:checked').length > 0;
-
+  
   if (location = isChecked) {
     error_location.innerHTML = "";
     logation.classList.remove("class--error");
@@ -162,4 +162,3 @@ function valideForm(event) {
   validateLocation(location, errorLocation);
   validateCheckbox1(checkbox1, errorCheckbox1);
 }
-
