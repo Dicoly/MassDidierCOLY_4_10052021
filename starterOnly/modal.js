@@ -11,6 +11,7 @@ function editNav() {
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalClose = document.getElementById("closeform");
 
 //DOM form
 const myForm = document.getElementById("myform");
@@ -45,29 +46,25 @@ let regexNumbers = /^[0-9]+$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+modalClose.addEventListener("click", launchModal);
 // launch modal form
 function launchModal() {
-  modalBg.style.display = "block";
+ modalBg.classList.toggle("bground--block");
 }
-
-// fermeture formulaire via le bouton (X)
-document.getElementById("closeform").addEventListener("click", function(closeModal) {
-  modalBg.style.display = "none";
-});
 
 //Fontion pour le prénom
 function validateFirst(input, error_first) {
   
   if (input.value >= 2 && input.value.trim() !== "") {
     error_first.innerHTML = "";
-    first.classList.remove("class_error");
+    return true;
   } else if (regexText.test(input.value) == false || input.value.trim() == "") {
     error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères.";
-    first.classList.add("class_error");
+    first.classList.add("class--error");
+    return false;
   } else {
     error_first.innerHTML = "";
-    first.classList.remove("class_error");
+    first.classList.remove("class--error");
   }
 }
 
@@ -76,12 +73,14 @@ function validateLast(input, error_last) {
   
   if (input.value >= 2 && input.value.trim() !== "") {
     error_last.innerHTML = "";
+    return true;
   } else if (regexText.test(input.value) == false) {
-    last.classList.add("class_error");
+    last.classList.add("class--error");
     error_last.innerHTML = "Le nom doit comporter au moins 2 caractères. ";
+    return false;
   } else {
     error_last.innerHTML = "";
-    last.classList.remove("class_error");
+    last.classList.remove("class--error");
   }
 }
 
@@ -90,9 +89,10 @@ function validateEmail(inputMail, error_email) {
   
   if (inputMail.value == true || regexMail.test(inputMail.value) == true) {
     error_email.innerHTML = "";
-    email.classList.remove("class_error");
+    email.classList.remove("class--error");
+    return true;
   } else {
-    email.classList.add("class_error");
+    email.classList.add("class--error");
     error_email.innerHTML = "Veuillez entrer une adresse mail valide.";
   }
 }
@@ -102,9 +102,10 @@ function validateBirthdate(inputBirthdate, error_birthdate) {
   
   if (inputBirthdate.value == true || regexDate.test(inputBirthdate.value) == true) {
     error_birthdate.innerHTML = "";
-    birthdate.classList.remove("class_error");
+    birthdate.classList.remove("class--error");
+    return true;
   } else {
-    birthdate.classList.add("class_error");
+    birthdate.classList.add("class--error");
     error_birthdate.innerHTML = "Veuillez entrer une date valide.";
   }
 }
@@ -114,22 +115,24 @@ function validateQuantity(input, error_quantity) {
   
   if (regexNumbers.test(input.value) == true) {
     error_quantity.innerHTML = "";
-    quantity.classList.remove("class_error");
+    quantity.classList.remove("class--error");
+    return true;
   } else {
-    quantity.classList.add("class_error");
+    quantity.classList.add("class--error");
     error_quantity.innerHTML = "Veuillez entrer un chiffre valide.";
   } 
 }
 
 //Fontion pour la localité
 function validateLocation(location, error_location) {
-  
-  if (location = location1.checked || location2.checked || location3.checked || location4.checked || location5.checked || location6.checked) {
+  let isChecked= document.querySelectorAll('input[name="location"]:checked').length > 0;
+
+  if (location = isChecked) {
     error_location.innerHTML = "";
-    logation.classList.remove("class_error");
+    logation.classList.remove("class--error");
     return true;
   } else {
-    logation.classList.add("class_error");
+    logation.classList.add("class--error");
     error_location.innerHTML = "Veuillez selectionner une ville..";
   }
 }
@@ -139,10 +142,10 @@ function validateCheckbox1(input, error_checkbox1) {
   
   if (input.checked) {
     error_checkbox1.innerHTML = "";
-    checkbox1_label.classList.remove("class_error");
+    checkbox1_label.classList.remove("class--error");
     return true;
   } else {
-    checkbox1_label.classList.add("class_error");
+    checkbox1_label.classList.add("class--error");
     error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
   }
 }
