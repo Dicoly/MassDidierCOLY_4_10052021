@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <div class="header-logo"><img alt="logo" src="Logo.png" width="auto" height="auto" /></div>
+    <div class="header-logo"><img alt="logo" src="Logo.png" width="auto" height="auto" class="logo"/></div>
     <div class="main-navbar">
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
@@ -83,9 +83,18 @@
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label><br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti" id="sub-btn"/>
+            <input class="button btn-submit thank-btn" type="submit" value="C'est parti" id="submitbtn"/>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="bground-thank">
+      <div class="content-thank">
+        <span class="close" id="closethanks"></span>
+        <div class="thank-body">
+          <p class="text-thank">Merci !<br/> Votre participation a bien été enregistrée.</p>
+        </div>
+        <input type="submit" class="btn-submit button-thank subbtn" value="Fermer"/>
       </div>
     </div>
   </main>

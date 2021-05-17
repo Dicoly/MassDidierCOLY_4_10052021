@@ -33,6 +33,8 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
 }
 .header-logo {
     float: left;
@@ -96,13 +98,14 @@ img {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
+    color: #fe142f;
     display: block;
-    margin-top: -15px;
+    margin-top: 10px;
   }
 } 
 
 main {
-  font-size: 130%;
+  font-size: 80%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
@@ -111,8 +114,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -166,11 +167,15 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: rgba(255, 255, 255, 1);
 }
 
-.bground--block {
+#bground--block {
   display: block;
+}
+
+#bground--none {
+  display: none;
 }
 
 .content {
@@ -238,7 +243,7 @@ input {
 }
 
 .error {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: italic;
   color: red;
 }
@@ -349,6 +354,52 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/*Bouton pour le remerciment*/ 
+.bground-thank {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+#bground-thank--block {
+  display: block;
+}
+
+#bground-thank--none {
+  display: none;
+}
+.content-thank {
+  margin: 0.1% auto;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  animation-name: thankopen;
+  animation-duration: var(--thank-duration);
+  background: #232323;
+  border-radius: 10px;
+  position: relative;
+  padding-top: 10px;
+}
+.thank-body {
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto 50px;
+}
+.text-thank {
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -495,6 +546,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .logo {
+    width: 150px;
+    padding-left: 10px;
+    padding-top: 15px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -502,7 +558,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -511,25 +568,60 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.3rem;
     white-space: normal;
+    font-weight: bold;
+    letter-spacing: -0.7px;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 0.8rem;
+    margin-top: 10px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: 20px auto 10px;
+    padding: 10px 35px;
+  }
+  .hero-section {
+    min-height: 20vh;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
+    font-size: 0.8rem;
+  }
+  .topnav-a:nth-child(1) {
+    background-color: white;
+    color: #000000;
+    border-radius: none;
+    font-weight: bold;
+  }
+  .topnav-a:nth-child(1):hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 11px;
+    font-weight: normal;
+  }
+  .bground {
+    top: 60px;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  main {
+    font-size: 50%;
+  }
+  .bground-thank {
+    top: 60px;
+  }
+  .text-thank {
+    font-size: 1.5rem;
+  }
+  .thank-body {
+    height: 80%;
   }
 }
 

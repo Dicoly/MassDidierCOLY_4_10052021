@@ -12,6 +12,8 @@ const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.getElementById("closeform");
+const thankBtn = document.querySelectorAll(".thank-btn");
+const thankBg = document.querySelector(".bground-thank");
 
 //DOM form
 const myForm = document.getElementById("myform");
@@ -19,8 +21,8 @@ const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthDate = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
-const logation = document.getElementById("location");
+const quanTity = document.getElementById("quantity");
+const locaTion = document.getElementById("location");
 const location1 = document.getElementById("location1") ;
 const location2 = document.getElementById("location2");
 const location3 = document.getElementById("location3");
@@ -46,11 +48,27 @@ let regexNumbers = /^[0-9]+$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-modalClose.addEventListener("click", launchModal);
+modalClose.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
- modalBg.classList.toggle("bground--block");
+ modalBg.id = 'bground--block';
 }
+//fermer modal form via croix
+function closeModal() {
+  modalBg.id = 'bground--none';
+ }
+
+// fermer  via "fermer"
+document.querySelector(".button-thank").addEventListener("click", function(closeThank) {
+	thankBg.id = 'bground-thank--none';
+	modalBg.id = 'bground--none';
+});
+
+//fermer thanks via croix
+document.getElementById("closethanks").addEventListener("click", function(closeThank) {
+	thankBg.id = 'bground-thank--none';
+	modalBg.id = 'bground--none';
+});
 
 //Fontion pour le prénom
 function validateFirst(input, error_first) {
@@ -59,7 +77,7 @@ function validateFirst(input, error_first) {
     error_first.innerHTML = "";
     return true;
   } else if (regexText.test(input.value) == false || input.value.trim() == "") {
-    error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères.";
+    error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères et sans chiffres.";
     first.classList.add("class--error");
     return false;
   } else {
@@ -76,7 +94,7 @@ function validateLast(input, error_last) {
     return true;
   } else if (regexText.test(input.value) == false) {
     last.classList.add("class--error");
-    error_last.innerHTML = "Le nom doit comporter au moins 2 caractères. ";
+    error_last.innerHTML = "Le nom doit comporter au moins 2 caractères et sans chiffres. ";
     return false;
   } else {
     error_last.innerHTML = "";
@@ -129,10 +147,10 @@ function validateLocation(location, error_location) {
   
   if (location = isChecked) {
     error_location.innerHTML = "";
-    logation.classList.remove("class--error");
+    locaTion.classList.remove("class--error");
     return true;
   } else {
-    logation.classList.add("class--error");
+    locaTion.classList.add("class--error");
     error_location.innerHTML = "Veuillez selectionner une ville..";
   }
 }
@@ -154,11 +172,20 @@ function validateCheckbox1(input, error_checkbox1) {
 myForm.addEventListener('submit', valideForm);
 function valideForm(event) {
   event.preventDefault();
-  validateFirst(firstName, errorFirst);
-  validateLast(lastName, errorLast);
-  validateEmail(email, errorEmail);
-  validateBirthdate(birthDate, errorBirthdate);
-  validateQuantity(quantity, errorQuantity);
-  validateLocation(location, errorLocation);
-  validateCheckbox1(checkbox1, errorCheckbox1);
-}
+  validateFirst(firstName, errorFirst)
+  validateLast(lastName, errorLast)
+  validateEmail(email, errorEmail)
+  validateBirthdate(birthDate, errorBirthdate)
+  validateQuantity(quanTity, errorQuantity)
+  validateLocation(locaTion, errorLocation)
+  validateCheckbox1(checkBox1, errorCheckbox1);
+
+  if (valideForm == false) {
+    return false;
+  } else {
+    thankBtn.forEach((btn) => btn.addEventListener("click", launchThank));
+      function launchThank() {
+        thankBg.id = 'bground-thank--block';
+      }
+    }
+  }
