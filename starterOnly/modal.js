@@ -73,7 +73,7 @@ document.getElementById("closethanks").addEventListener("click", function(closeT
 //Fontion pour le prénom
 function validateFirst(input, error_first) {
   
-  if (input.value >= 2 && input.value.trim() !== "") {
+  if (input.value >= 2 && input.value.trim() != "") {
     error_first.innerHTML = "";
     return true;
   } else if (regexText.test(input.value) == false || input.value.trim() == "") {
@@ -83,6 +83,7 @@ function validateFirst(input, error_first) {
   } else {
     error_first.innerHTML = "";
     first.classList.remove("class--error");
+    return true;
   }
 }
 
@@ -99,6 +100,7 @@ function validateLast(input, error_last) {
   } else {
     error_last.innerHTML = "";
     last.classList.remove("class--error");
+    return true;
   }
 }
 
@@ -112,6 +114,7 @@ function validateEmail(inputMail, error_email) {
   } else {
     email.classList.add("class--error");
     error_email.innerHTML = "Veuillez entrer une adresse mail valide.";
+    return false;
   }
 }
 
@@ -125,6 +128,7 @@ function validateBirthdate(inputBirthdate, error_birthdate) {
   } else {
     birthdate.classList.add("class--error");
     error_birthdate.innerHTML = "Veuillez entrer une date valide.";
+    return false;
   }
 }
 
@@ -138,6 +142,7 @@ function validateQuantity(input, error_quantity) {
   } else {
     quantity.classList.add("class--error");
     error_quantity.innerHTML = "Veuillez entrer un chiffre valide.";
+    return false;
   } 
 }
 
@@ -151,7 +156,8 @@ function validateLocation(location, error_location) {
     return true;
   } else {
     locaTion.classList.add("class--error");
-    error_location.innerHTML = "Veuillez selectionner une ville..";
+    error_location.innerHTML = "Veuillez selectionner une ville.";
+    return false;
   }
 }
 
@@ -165,6 +171,7 @@ function validateCheckbox1(input, error_checkbox1) {
   } else {
     checkbox1_label.classList.add("class--error");
     error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
+    return false;
   }
 }
 
@@ -172,15 +179,14 @@ function validateCheckbox1(input, error_checkbox1) {
 myForm.addEventListener('submit', valideForm);
 function valideForm(event) {
   event.preventDefault();
-  validateFirst(firstName, errorFirst)
-  validateLast(lastName, errorLast)
-  validateEmail(email, errorEmail)
-  validateBirthdate(birthDate, errorBirthdate)
-  validateQuantity(quanTity, errorQuantity)
-  validateLocation(locaTion, errorLocation)
-  validateCheckbox1(checkBox1, errorCheckbox1);
-
-  if (valideForm == false) {
+  if (validateFirst(firstName, errorFirst) == false) { event.preventDefault();}
+  if (validateLast(lastName, errorLast) == false) { event.preventDefault();}
+  if (validateEmail(email, errorEmail) == false) { event.preventDefault();}
+  if (validateBirthdate(birthDate, errorBirthdate) == false) { event.preventDefault();}
+  if (validateQuantity(quanTity, errorQuantity) == false) { event.preventDefault();}
+  if (validateLocation(locaTion, errorLocation) == false) { event.preventDefault();}
+  if (validateCheckbox1(checkBox1, errorCheckbox1) == false) { event.preventDefault();}
+  else if (valideForm == false) {
     return false;
   } else {
     thankBtn.forEach((btn) => btn.addEventListener("click", launchThank));
@@ -188,4 +194,4 @@ function valideForm(event) {
         thankBg.id = 'bground-thank--block';
       }
     }
-  }
+};
