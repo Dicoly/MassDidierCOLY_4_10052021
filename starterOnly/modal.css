@@ -105,7 +105,7 @@ img {
 } 
 
 main {
-  font-size: 80%;
+  font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
@@ -240,6 +240,7 @@ input {
   border: 2px solid#e54858;
   color: #e54858;
   background-color: rgb(255, 224, 224);
+  border-radius: 8px;
 }
 
 .error {
@@ -375,7 +376,7 @@ input[data-error]::after {
   display: none;
 }
 .content-thank {
-  margin: 0.1% auto;
+  margin: 5% auto;
   width: 100%;
   max-width: 500px;
   height: 100%;
@@ -385,6 +386,7 @@ input[data-error]::after {
   border-radius: 10px;
   position: relative;
   padding-top: 10px;
+  margin-top: -20px;
 }
 .thank-body {
   height: 85%;
@@ -470,6 +472,7 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin-top: 10px;
 }
 .hero-section {
   min-height: 93vh;
@@ -582,6 +585,9 @@ footer {
     border-radius: 10px;
     margin-top: 20px;
   }
+  .hero-img {
+    height: 40vh;
+  }
   .hero-section > .btn-signup {
     display: block;
     margin: 20px auto 10px;
@@ -610,6 +616,19 @@ footer {
   .bground {
     top: 60px;
     background-color: rgba(255, 255, 255, 1);
+    height: 95vh;
+  }
+  .content {
+    margin: 0% auto;
+  }
+  label {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .text-control {
+    padding: 5px;
+    width: 100%;
+    height: 35px;
   }
   main {
     font-size: 50%;
@@ -617,6 +636,9 @@ footer {
   .bground-thank {
     top: 60px;
   }
+  /*.content-thank{
+    margin: 0% auto;
+  }*/
   .text-thank {
     font-size: 1.5rem;
   }
