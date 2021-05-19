@@ -40,14 +40,14 @@ function modalSuccessOpen() {
   }
 };
 
-//fermer modal form via fermer
+//fermer message thank via fermer
 function modalSuccessClose() {
   if (document.querySelectorAll(".bground-thank:not(.hide)").length >0) {
     thankBg.classList.add('hide');
   }
 };
 
-//fermer modal form via croix
+//fermer message thank via croix
 function closeSuccessModal() {
   if (document.querySelectorAll(".bground-thank:not(.hide)").length >0) {
     thankBg.classList.add('hide');
@@ -128,7 +128,7 @@ function validateBirthdate(inputBirthdate, error_birthdate) {
   return false;
 };
 
-//Fontion pour la date de naissance
+//Fontion pour le nombres de tournois
 const quanTity = document.getElementById("quantity");
 const errorQuantity = document.getElementById("errorquantity");
 let regexNumbers = /^[0-9]+$/;
