@@ -194,10 +194,10 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
 }
 input {
   padding: 8px;
@@ -210,8 +210,12 @@ input {
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  height: 40px;
 }
+.formData {
+  margin-bottom: -5px;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -342,7 +346,7 @@ input[data-error]::after {
 .btn-signup {
   background: #fe142f;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
@@ -360,20 +364,20 @@ input[data-error]::after {
   height: 100%;
   width: 100%;
   overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
 }
 
 .content-thank {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  height: 100%;
+  height: 85%;
   animation-name: thankopen;
   animation-duration: var(--thank-duration);
   background: #232323;
   border-radius: 10px;
   position: relative;
   padding-top: 10px;
-  margin-top: -20px;
 }
 .thank-body {
   height: 85%;
@@ -458,11 +462,11 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 15px;
+  margin-top: -5px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 70%;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -478,6 +482,7 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  height: 100%;
 }
 .hero-content::after {
   content: "";
@@ -513,6 +518,7 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
+  height: 70vh;
 }
 .hero-img img {
   width: 100%;
@@ -524,7 +530,7 @@ input[data-error]::after {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin: 50px 0 30px;
   font-weight: bolder;
 }
 .hero-section > .btn-signup {
@@ -608,14 +614,19 @@ footer {
   .content {
     margin: 0% auto;
   }
+  .modal-body {
+   margin: 2px auto; 
+  }
   label {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-top: 1px;
   }
   .text-control {
     padding: 5px;
     width: 100%;
     height: 35px;
+    margin-bottom: 1px;
   }
   main {
     font-size: 50%;
@@ -623,11 +634,26 @@ footer {
   .bground-thank {
     top: 60px;
   }
+  .content-thank {
+    height: 91%;
+    margin: 0% auto;
+  }
   .text-thank {
     font-size: 1.5rem;
   }
   .thank-body {
-    height: 80%;
+    height: 85%;
+  }
+  .error {
+    font-size: 0.6rem;
+  }
+  .text-label {
+    font-size: 13px;
+    margin-top: -5px;
+    margin-bottom: 2px;
+  }
+  .formData {
+    margin-bottom: 0px;
   }
 }
 
