@@ -159,7 +159,6 @@ main {
 }
 
 .bground {
-  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -167,14 +166,10 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(26, 39, 156, 0.4);
 }
 
-#bground--block {
-  display: block;
-}
-
-#bground--none {
+.hide {
   display: none;
 }
 
@@ -358,7 +353,6 @@ input[data-error]::after {
 
 /*Bouton pour le remerciment*/ 
 .bground-thank {
-  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -368,13 +362,6 @@ input[data-error]::after {
   overflow: auto;
 }
 
-#bground-thank--block {
-  display: block;
-}
-
-#bground-thank--none {
-  display: none;
-}
 .content-thank {
   margin: 5% auto;
   width: 100%;
@@ -636,9 +623,6 @@ footer {
   .bground-thank {
     top: 60px;
   }
-  /*.content-thank{
-    margin: 0% auto;
-  }*/
   .text-thank {
     font-size: 1.5rem;
   }
