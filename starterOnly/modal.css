@@ -518,7 +518,6 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
-  height: 70vh;
 }
 .hero-img img {
   width: 100%;
