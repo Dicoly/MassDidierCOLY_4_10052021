@@ -65,7 +65,7 @@ const firstName = document.getElementById("first");
 const errorFirst = document.getElementById("errorfirst");
 
 function validateFirst(input, error_first) {
-  let regexText = /^[a-zA-Z-\s]+$/;
+  const regexText = /^[a-zA-Z-\s]+$/;
   
   if (input.value >= 2 && input.value.trim() != "" || regexText.test(input.value) == true) {
     error_first.innerHTML = "";
@@ -82,7 +82,7 @@ const lastName = document.getElementById("last");
 const errorLast = document.getElementById("errorlast");
 
 function validateLast(input, error_last) {
-  let regexText = /^[a-zA-Z-\s]+$/;
+  const regexText = /^[a-zA-Z-\s]+$/;
   
   if (input.value >= 2 && input.value.trim() !== "" || regexText.test(input.value) == true) {
     error_last.innerHTML = "";
@@ -97,7 +97,7 @@ function validateLast(input, error_last) {
 //Fontion pour le mail
 const email = document.getElementById("email");
 const errorEmail = document.getElementById("erroremail");
-let regexMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
+const regexMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
 
 function validateEmail(inputMail, error_email) {
   
@@ -114,7 +114,7 @@ function validateEmail(inputMail, error_email) {
 //Fontion pour la date de naissance
 const birthDate = document.getElementById("birthdate");
 const errorBirthdate = document.getElementById("errorbirthdate");
-let regexDate = /[0-9]\-/;
+const regexDate = /[0-9]\-/;
 
 function validateBirthdate(inputBirthdate, error_birthdate) {
   
@@ -131,7 +131,7 @@ function validateBirthdate(inputBirthdate, error_birthdate) {
 //Fontion pour le nombres de tournois
 const quanTity = document.getElementById("quantity");
 const errorQuantity = document.getElementById("errorquantity");
-let regexNumbers = /^[0-9]+$/;
+const regexNumbers = /^[0-9]+$/;
 
 function validateQuantity(input, error_quantity) {
   
@@ -154,10 +154,8 @@ function validateLocation(locationText, error_location) {
   
   if (isChecked) {
     error_location.innerHTML = "";
-    locaTion.classList.remove("class--error");
     return true;
   }
-  locaTion.classList.add("class--error");
   error_location.innerHTML = "Veuillez selectionner une ville.";
   return false;
 };
@@ -170,10 +168,8 @@ function validateCheckbox1(input, error_checkbox1) {
   
   if (input.checked) {
     error_checkbox1.innerHTML = "";
-    checkbox1_label.classList.remove("class--error");
     return true;
   }
-  checkbox1_label.classList.add("class--error");
   error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
   return false;
 };
@@ -185,20 +181,19 @@ myForm.addEventListener('submit', valideForm);
 
 function valideForm(event) {
   event.preventDefault();
-  let isValid = validateFirst(firstName, errorFirst)
-  && validateLast(lastName, errorLast)
-  && validateEmail(email, errorEmail)
-  && validateBirthdate(birthDate, errorBirthdate)
-  && validateQuantity(quanTity, errorQuantity)
-  && validateLocation(locaTion, errorLocation)
-  && validateCheckbox1(checkBox1, errorCheckbox1);
+  let isValid = [validateFirst(firstName, errorFirst),
+   validateLast(lastName, errorLast),
+   validateEmail(email, errorEmail),
+   validateBirthdate(birthDate, errorBirthdate),
+   validateQuantity(quanTity, errorQuantity),
+   validateLocation(locaTion, errorLocation),
+   validateCheckbox1(checkBox1, errorCheckbox1)];
   
-  if (isValid) {
+  if (isValid.every((validation) => { return validation == true;})){
     closeModal();
     modalSuccessOpen();
     cleanForm();
-  }
-  return false;
+  };
 };
 
 /*Nettoyage du formulaire */
