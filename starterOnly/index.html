@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <div class="header-logo"><img alt="logo" src="Logo.png" width="auto" height="auto" /></div>
+    <div class="header-logo"><img alt="logo" src="Logo.png" width="auto" height="auto" class="logo"/></div>
     <div class="main-navbar">
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
@@ -30,37 +30,43 @@
       <div class="hero-img"><img src="./bg_img.jpg" alt="img" /></div>
       <button class="btn-signup modal-btn">je m'inscris</button>
     </div>
-    <div class="bground">
+    <div class="bground hide">
       <div class="content">
         <span class="close" id="closeform"></span>
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" id="myform">
+            <!-- le prenom -->
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
               <span class="error" id="errorfirst"></span><br>
             </div>
+            <!-- le nom -->
             <div class="formData">
               <label for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last"/><br>
               <span class="error" id="errorlast"></span><br>
             </div>
+            <!-- L'adresse mail -->
             <div class="formData">
               <label for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email"/><br>
               <span class="error" id="erroremail"></span><br>
             </div>
+            <!-- La date de naissance -->
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
               <span class="error" id="errorbirthdate"></span><br>
             </div>
+            <!-- Le nombre de tournois -->
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
               <span class="error" id="errorquantity"></span><br>
             </div>
-            <p class="text-label"  id="location">Quelles villes ?</p>
+            <!-- Choix de la ville -->
+            <p class="text-label"  id="locationText">Quelles villes ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
               <label class="checkbox-label" for="location1"><span class="checkbox-icon"></span>New York</label>
@@ -76,16 +82,27 @@
               <label class="checkbox-label" for="location6"><span class="checkbox-icon"></span>Portland</label>
               <span class="error" id="errorlocation"></span>
             </div>
+            <!-- Acceptation des conditions -->
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
+              <input class="checkbox-input" type="checkbox" id="checkbox1"/>
               <label class="checkbox2-label" for="checkbox1" required id="checkbox1_label"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
               <span class="error" id="errorcheckbox1"></span><br>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label><br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti" id="sub-btn"/>
+            <input class="button btn-submit thank-btn" type="submit" value="C'est parti" id="submitbtn"/>
           </form>
         </div>
+      </div>
+    </div>
+    <!-- Message de remerciement après validation du formulaire -->
+    <div class="bground-thank hide">
+      <div class="content-thank">
+        <span class="close" id="closethanks"></span>
+        <div class="thank-body">
+          <p class="text-thank">Merci !<br/> Votre participation a bien été enregistrée.</p>
+        </div>
+        <input type="submit" class="btn-submit button-thank subbtn" value="Fermer"/>
       </div>
     </div>
   </main>

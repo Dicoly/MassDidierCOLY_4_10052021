@@ -12,153 +12,211 @@ const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.getElementById("closeform");
-
-//DOM form
-const myForm = document.getElementById("myform");
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
-const birthDate = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
-const logation = document.getElementById("location");
-const location1 = document.getElementById("location1") ;
-const location2 = document.getElementById("location2");
-const location3 = document.getElementById("location3");
-const location4 = document.getElementById("location4");
-const location5 = document.getElementById("location5");
-const location6 = document.getElementById("location6");
-const checkBox1 = document.getElementById("checkbox1");
-
-//Variable pour ajouter ou supprimer les erreurs
-const errorFirst = document.getElementById ("errorfirst");
-const errorLast = document.getElementById ("errorlast");
-const errorEmail = document.getElementById ("erroremail");
-const errorBirthdate = document.getElementById ("errorbirthdate");
-const errorQuantity = document.getElementById ("errorquantity");
-const errorLocation = document.getElementById ("errorlocation");
-const errorCheckbox1 = document.getElementById ("errorcheckbox1");
-
-//Regex pour acceptation texte, email, date et nombres
-let regexText = /^[a-zA-Z-\s]+$/;
-let regexMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
-let regexDate = /[0-9]\-/;
-let regexNumbers = /^[0-9]+$/;
+const thankBtn = document.querySelectorAll(".thank-btn");
+const thankBg = document.querySelector(".bground-thank");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-modalClose.addEventListener("click", launchModal);
+modalClose.addEventListener("click", closeModal);
+
 // launch modal form
 function launchModal() {
- modalBg.classList.toggle("bground--block");
-}
+  if (document.querySelectorAll(".bground.hide").length >0) {
+    modalBg.classList.remove('hide');
+  }
+};
+
+//fermer modal form via croix
+function closeModal() {
+  if (document.querySelectorAll(".bground:not(.hide)").length >0) {
+    modalBg.classList.add('hide');
+  }
+};
+
+// lancement message de remerciement
+function modalSuccessOpen() {
+  if (document.querySelectorAll(".bground-thank.hide").length >0) {
+    thankBg.classList.remove('hide');
+  }
+};
+
+//fermer message thank via fermer
+function modalSuccessClose() {
+  if (document.querySelectorAll(".bground-thank:not(.hide)").length >0) {
+    thankBg.classList.add('hide');
+  }
+};
+
+//fermer message thank via croix
+function closeSuccessModal() {
+  if (document.querySelectorAll(".bground-thank:not(.hide)").length >0) {
+    thankBg.classList.add('hide');
+  }
+};
+
+// fermer message thank via "fermer"
+document.querySelector(".button-thank").addEventListener("click", modalSuccessClose);
+
+//fermer message thanks via croix
+document.getElementById("closethanks").addEventListener("click", closeSuccessModal);
 
 //Fontion pour le prénom
+const firstName = document.getElementById("first");
+const errorFirst = document.getElementById("errorfirst");
+
 function validateFirst(input, error_first) {
+  const regexText = /^[a-zA-Z-\s]+$/;
   
-  if (input.value >= 2 && input.value.trim() !== "") {
-    error_first.innerHTML = "";
-    return true;
-  } else if (regexText.test(input.value) == false || input.value.trim() == "") {
-    error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères.";
-    first.classList.add("class--error");
-    return false;
-  } else {
+  if (input.value >= 2 && input.value.trim() != "" || regexText.test(input.value) == true) {
     error_first.innerHTML = "";
     first.classList.remove("class--error");
+    return true;
   }
-}
+  error_first.innerHTML = "Le prénom doit comporter au moins 2 caractères et sans chiffres.";
+  first.classList.add("class--error");
+  return false;
+};
 
 //Fontion pour le nom
+const lastName = document.getElementById("last");
+const errorLast = document.getElementById("errorlast");
+
 function validateLast(input, error_last) {
+  const regexText = /^[a-zA-Z-\s]+$/;
   
-  if (input.value >= 2 && input.value.trim() !== "") {
-    error_last.innerHTML = "";
-    return true;
-  } else if (regexText.test(input.value) == false) {
-    last.classList.add("class--error");
-    error_last.innerHTML = "Le nom doit comporter au moins 2 caractères. ";
-    return false;
-  } else {
+  if (input.value >= 2 && input.value.trim() !== "" || regexText.test(input.value) == true) {
     error_last.innerHTML = "";
     last.classList.remove("class--error");
+    return true;
   }
-}
+  last.classList.add("class--error");
+  error_last.innerHTML = "Le nom doit comporter au moins 2 caractères et sans chiffres. ";
+  return false;
+};
 
 //Fontion pour le mail
+const email = document.getElementById("email");
+const errorEmail = document.getElementById("erroremail");
+const regexMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
+
 function validateEmail(inputMail, error_email) {
   
   if (inputMail.value == true || regexMail.test(inputMail.value) == true) {
     error_email.innerHTML = "";
     email.classList.remove("class--error");
     return true;
-  } else {
-    email.classList.add("class--error");
-    error_email.innerHTML = "Veuillez entrer une adresse mail valide.";
   }
-}
+  email.classList.add("class--error");
+  error_email.innerHTML = "Veuillez entrer une adresse mail valide.";
+  return false;
+};
 
 //Fontion pour la date de naissance
+const birthDate = document.getElementById("birthdate");
+const errorBirthdate = document.getElementById("errorbirthdate");
+const regexDate = /[0-9]\-/;
+
 function validateBirthdate(inputBirthdate, error_birthdate) {
   
   if (inputBirthdate.value == true || regexDate.test(inputBirthdate.value) == true) {
     error_birthdate.innerHTML = "";
     birthdate.classList.remove("class--error");
     return true;
-  } else {
-    birthdate.classList.add("class--error");
-    error_birthdate.innerHTML = "Veuillez entrer une date valide.";
   }
-}
+  birthdate.classList.add("class--error");
+  error_birthdate.innerHTML = "Veuillez entrer une date valide.";
+  return false;
+};
 
-//Fontion pour la date de naissance
+//Fontion pour le nombres de tournois
+const quanTity = document.getElementById("quantity");
+const errorQuantity = document.getElementById("errorquantity");
+const regexNumbers = /^[0-9]+$/;
+
 function validateQuantity(input, error_quantity) {
   
   if (regexNumbers.test(input.value) == true) {
     error_quantity.innerHTML = "";
     quantity.classList.remove("class--error");
     return true;
-  } else {
-    quantity.classList.add("class--error");
-    error_quantity.innerHTML = "Veuillez entrer un chiffre valide.";
-  } 
-}
+  }
+  quantity.classList.add("class--error");
+  error_quantity.innerHTML = "Veuillez entrer un chiffre valide.";
+  return false;
+};
 
 //Fontion pour la localité
-function validateLocation(location, error_location) {
-  let isChecked= document.querySelectorAll('input[name="location"]:checked').length > 0;
+const locaTion = document.getElementById("locationText");
+const errorLocation = document.getElementById("errorlocation");
+
+function validateLocation(locationText, error_location) {
+  let isChecked = document.querySelectorAll('input[name="location"]:checked').length > 0;
   
-  if (location = isChecked) {
+  if (isChecked) {
     error_location.innerHTML = "";
-    logation.classList.remove("class--error");
     return true;
-  } else {
-    logation.classList.add("class--error");
-    error_location.innerHTML = "Veuillez selectionner une ville..";
   }
-}
+  error_location.innerHTML = "Veuillez selectionner une ville.";
+  return false;
+};
 
 //Fontion pour checkbox
+const checkBox1 = document.getElementById("checkbox1");
+const errorCheckbox1 = document.getElementById("errorcheckbox1");
+
 function validateCheckbox1(input, error_checkbox1) {
   
   if (input.checked) {
     error_checkbox1.innerHTML = "";
-    checkbox1_label.classList.remove("class--error");
     return true;
-  } else {
-    checkbox1_label.classList.add("class--error");
-    error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
   }
-}
+  error_checkbox1.innerHTML = "Merci d'accepter les termes et conditions.";
+  return false;
+};
 
 /*Validation formulaire*/
+const myForm = document.getElementById("myform");
+
 myForm.addEventListener('submit', valideForm);
+
 function valideForm(event) {
   event.preventDefault();
-  validateFirst(firstName, errorFirst);
-  validateLast(lastName, errorLast);
-  validateEmail(email, errorEmail);
-  validateBirthdate(birthDate, errorBirthdate);
-  validateQuantity(quantity, errorQuantity);
-  validateLocation(location, errorLocation);
-  validateCheckbox1(checkbox1, errorCheckbox1);
-}
+  let isValid = [validateFirst(firstName, errorFirst),
+   validateLast(lastName, errorLast),
+   validateEmail(email, errorEmail),
+   validateBirthdate(birthDate, errorBirthdate),
+   validateQuantity(quanTity, errorQuantity),
+   validateLocation(locaTion, errorLocation),
+   validateCheckbox1(checkBox1, errorCheckbox1)];
+  
+  if (isValid.every((validation) => { return validation == true;})){
+    closeModal();
+    modalSuccessOpen();
+    cleanForm();
+  };
+};
+
+/*Nettoyage du formulaire */
+const locaTion1 = document.getElementById('location1');
+const locaTion2 = document.getElementById('location2');
+const locaTion3 = document.getElementById('location3');
+const locaTion4 = document.getElementById('location4');
+const locaTion5 = document.getElementById('location5');
+const locaTion6 = document.getElementById('location6');
+const checkBox2 = document.getElementById("checkbox2");
+
+function cleanForm () {
+  firstName.value = "";
+  lastName.value = "";
+  email.value = "";
+  birthDate.value = "";
+  quanTity.value = "";
+  locaTion1.checked = false;
+  locaTion2.checked = false;
+  locaTion3.checked = false;
+  locaTion4.checked = false;
+  locaTion5.checked = false;
+  locaTion6.checked = false;
+  checkBox1.checked = false;
+  checkBox2.checked = false;
+};

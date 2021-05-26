@@ -33,6 +33,8 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
 }
 .header-logo {
     float: left;
@@ -96,8 +98,9 @@ img {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
+    color: #fe142f;
     display: block;
-    margin-top: -15px;
+    margin-top: 10px;
   }
 } 
 
@@ -111,8 +114,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -158,7 +159,6 @@ main {
 }
 
 .bground {
-  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -169,8 +169,8 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.bground--block {
-  display: block;
+.hide {
+  display: none;
 }
 
 .content {
@@ -194,10 +194,10 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
 }
 input {
   padding: 8px;
@@ -210,8 +210,12 @@ input {
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  height: 40px;
 }
+.formData {
+  margin-bottom: -5px;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -235,10 +239,11 @@ input {
   border: 2px solid#e54858;
   color: #e54858;
   background-color: rgb(255, 224, 224);
+  border-radius: 8px;
 }
 
 .error {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: italic;
   color: red;
 }
@@ -341,7 +346,7 @@ input[data-error]::after {
 .btn-signup {
   background: #fe142f;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
@@ -349,6 +354,45 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/*Bouton pour le remerciment*/ 
+.bground-thank {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content-thank {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  height: 85%;
+  animation-name: thankopen;
+  animation-duration: var(--thank-duration);
+  background: #232323;
+  border-radius: 10px;
+  position: relative;
+  padding-top: 10px;
+}
+.thank-body {
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto 50px;
+}
+.text-thank {
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -418,10 +462,11 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 15px;
+  margin-top: -5px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 70%;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -437,6 +482,7 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  height: 100%;
 }
 .hero-content::after {
   content: "";
@@ -483,7 +529,7 @@ input[data-error]::after {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin: 50px 0 30px;
   font-weight: bolder;
 }
 .hero-section > .btn-signup {
@@ -495,6 +541,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .logo {
+    width: 150px;
+    padding-left: 10px;
+    padding-top: 15px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -502,7 +553,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -511,25 +563,96 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.3rem;
     white-space: normal;
+    font-weight: bold;
+    letter-spacing: -0.7px;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 0.8rem;
+    margin-top: 10px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
+  }
+  .hero-img {
+    height: 40vh;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: 20px auto 10px;
+    padding: 10px 35px;
+  }
+  .hero-section {
+    min-height: 20vh;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
+    font-size: 0.8rem;
+  }
+  .topnav-a:nth-child(1) {
+    background-color: white;
+    color: #000000;
+    border-radius: none;
+    font-weight: bold;
+  }
+  .topnav-a:nth-child(1):hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 11px;
+    font-weight: normal;
+  }
+  .bground {
+    top: 60px;
+    background-color: rgba(255, 255, 255, 1);
+    height: 95vh;
+  }
+  .content {
+    margin: 0% auto;
+  }
+  .modal-body {
+   margin: 2px auto; 
+  }
+  label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-top: 1px;
+  }
+  .text-control {
+    padding: 5px;
+    width: 100%;
+    height: 35px;
+    margin-bottom: 1px;
+  }
+  main {
+    font-size: 50%;
+  }
+  .bground-thank {
+    top: 60px;
+  }
+  .content-thank {
+    height: 91%;
+    margin: 0% auto;
+  }
+  .text-thank {
+    font-size: 1.5rem;
+  }
+  .thank-body {
+    height: 85%;
+  }
+  .error {
+    font-size: 0.6rem;
+  }
+  .text-label {
+    font-size: 13px;
+    margin-top: -5px;
+    margin-bottom: 2px;
+  }
+  .formData {
+    margin-bottom: 0px;
   }
 }
 
