@@ -5,4 +5,4 @@
 4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 
 ## site web
-[github page](https://github.com/Dicoly/MassDidierCOLY_4_10052021)
+[github page](https://github.com/Dicoly/MassDidierCOLY_4_10052021/)
