@@ -67,7 +67,7 @@ const errorFirst = document.getElementById("errorfirst");
 function validateFirst(input, error_first) {
   const regexText = /^[a-zA-Z-\s]+$/;
   
-  if (input.value >= 2 && input.value.trim() != "" || regexText.test(input.value) == true) {
+  if (input.value.length >= 2 && input.value.trim() != "" || regexText.test(input.value) == true) {
     error_first.innerHTML = "";
     first.classList.remove("class--error");
     return true;
@@ -84,7 +84,7 @@ const errorLast = document.getElementById("errorlast");
 function validateLast(input, error_last) {
   const regexText = /^[a-zA-Z-\s]+$/;
   
-  if (input.value >= 2 && input.value.trim() !== "" || regexText.test(input.value) == true) {
+  if (input.value.length >= 2 && input.value.trim() !== "" || regexText.test(input.value) == true) {
     error_last.innerHTML = "";
     last.classList.remove("class--error");
     return true;
